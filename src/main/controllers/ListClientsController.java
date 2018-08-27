@@ -1,7 +1,7 @@
 package controllers;
 
-import FxModels.ClientFx;
-import FxModels.ListClientModel;
+import fxmodels.ClientFx;
+import fxmodels.ListClientModel;
 import fxml.Main;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;

@@ -1,13 +1,10 @@
 package controllers;
 
-import FxModels.ClientFx;
+import fxmodels.ClientFx;
 import fxml.Main;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import models.Car;
-import models.Client;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -31,10 +28,6 @@ public class ScreenController {
 
     public static void addScreen(String name, Parent parent){
         screenMap.put(name, parent);
-    }
-
-    public static void removeScreen(String name){
-        screenMap.remove(name);
     }
 
     public void activate(String name) throws IOException {

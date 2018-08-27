@@ -1,11 +1,10 @@
-package FxModels;
+package fxmodels;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.Car;
 import org.omg.CORBA.portable.ApplicationException;
 import utils.ExtensionUtility;
-import utils.Filter;
 import utils.converters.ConverterCar;
 
 import java.util.ArrayList;
@@ -19,9 +18,7 @@ public class ListCarsModel {
     public void init(ClientFx selectedClient) throws ApplicationException {
         Class instance = Car.class;
         List<Car> cars = ExtensionUtility.getExtension(instance);
-
         carsFxList.clear();
-
         cars.forEach(car -> {
 //            if (car.getClient().getId() == selectedClient.getId()) {
                 this.carsFxList.add(ConverterCar.convertToCarFx(car));

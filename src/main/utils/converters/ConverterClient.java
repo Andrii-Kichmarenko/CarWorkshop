@@ -1,7 +1,7 @@
 package utils.converters;
 
 
-import FxModels.ClientFx;
+import fxmodels.ClientFx;
 import models.Client;
 
 public class ConverterClient {

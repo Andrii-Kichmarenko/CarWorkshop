@@ -66,7 +66,7 @@
       </HBox>
    </bottom>
    <center>
-      <TableView stylesheets="@main.css" BorderPane.alignment="CENTER">
+      <TableView fx:id="carsTableView" stylesheets="@main.css" BorderPane.alignment="CENTER">
         <columns>
             <TableColumn maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Name" />
           <TableColumn fx:id="BrandColumn" prefWidth="260.0" text="Brand" />

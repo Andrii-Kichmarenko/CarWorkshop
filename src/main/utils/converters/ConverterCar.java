@@ -1,9 +1,7 @@
 package utils.converters;
 
-import FxModels.CarFx;
-import FxModels.ClientFx;
+import fxmodels.CarFx;
 import models.Car;
-import models.Client;
 
 public class ConverterCar {
     public static CarFx convertToCarFx(Car car){

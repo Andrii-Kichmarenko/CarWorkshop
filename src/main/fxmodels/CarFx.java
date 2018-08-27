@@ -1,4 +1,4 @@
-package FxModels;
+package fxmodels;
 
 import javafx.beans.property.*;
 

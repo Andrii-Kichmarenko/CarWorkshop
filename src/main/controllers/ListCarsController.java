@@ -1,9 +1,7 @@
 package controllers;
 
-import FxModels.CarFx;
-import FxModels.ClientFx;
-import FxModels.ListCarsModel;
-import FxModels.ListClientModel;
+import fxmodels.CarFx;
+import fxmodels.ListCarsModel;
 import fxml.Main;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -58,6 +56,7 @@ public class ListCarsController extends ScreenController{
             }
 
             this.carsTableView.setItems(this.listCarsModel.getCarFxObservableList());
+
             this.BrandColumn.setCellValueFactory(cellData -> cellData.getValue().brandProperty());
             this.modelColumn.setCellValueFactory(cellData -> cellData.getValue().modelProperty());
             this.engineCapacityColumn.setCellValueFactory(cellData -> cellData.getValue().engineCapacityProperty());
@@ -94,5 +93,7 @@ public class ListCarsController extends ScreenController{
     private void cancelButtonAction(MouseEvent event){
         Main.saveAndFinish();
     }
+
+
 
 }
