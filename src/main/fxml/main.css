@@ -1,0 +1,10 @@
+.table-view .table-cell{
+    -fx-font-size:25px;
+
+    /* -fx-text-fill:orange; */
+
+}
+
+.table-view .column-header {
+    -fx-font-size:18px;
+}

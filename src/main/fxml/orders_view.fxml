@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Controller">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" spacing="30.0">
+               <children>
+                  <Label alignment="CENTER" text="Orders">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="117.0" layoutY="16.0">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER_LEFT" spacing="30.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="26.0" layoutY="26.0" mnemonicParsing="false" text="Register client">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="158.0" layoutY="26.0" mnemonicParsing="false" text="Register car">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" text="Add order">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <center>
+      <TableView editable="true" prefHeight="200.0" prefWidth="200.0" stylesheets="@main.css" BorderPane.alignment="CENTER">
+        <columns>
+            <TableColumn maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Name" />
+          <TableColumn prefWidth="164.0" text="Name" />
+          <TableColumn prefWidth="178.0" text="Surname" />
+            <TableColumn prefWidth="305.0" text="Car" />
+            <TableColumn prefWidth="193.0" text="Placed date" />
+            <TableColumn prefWidth="180.0" text="Finish date" />
+            <TableColumn prefWidth="162.0" text="Status" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>
