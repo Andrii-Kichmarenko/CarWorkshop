@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import models.Client;
+import org.greenrobot.eventbus.EventBus;
 import org.omg.CORBA.portable.ApplicationException;
 import utils.ExtensionUtility;
 import utils.converters.ConverterClient;

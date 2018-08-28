@@ -10,7 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import org.greenrobot.eventbus.EventBus;
 import org.omg.CORBA.portable.ApplicationException;
+import utils.ChooseClientEvent;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -83,10 +85,10 @@ public class ListClientsController extends ScreenController{
     @FXML
     private void nextButtonAction(MouseEvent event){
         System.out.println("Next_bt_Pressed");
-
-        if(clientsTableView.getSelectionModel().getSelectedItem() != null) {
-            setSelectedClient(clientsTableView.getSelectionModel().getSelectedItem());
-        }
+        Integer selectedClient = clientsTableView.getSelectionModel().getSelectedItem().getIdClient();
+        EventBus.getDefault().post(new ChooseClientEvent(selectedClient));
+        //DELETE
+        setSelectedClient(clientsTableView.getSelectionModel().getSelectedItem());
         try {
             activate("Choose car");
         } catch (IOException e) {

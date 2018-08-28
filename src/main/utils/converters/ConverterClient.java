@@ -8,7 +8,7 @@ public class ConverterClient {
 
 //    public static Book convertToBook(BookFx bookFx){
 //        Book book = new Book();
-//        book.setId(bookFx.getId());
+//        book.setIdClient(bookFx.getIdClient());
 //        book.setTitle(bookFx.getTitle());
 //        book.setDescription(bookFx.getDescription());
 //        book.setRating(bookFx.getRating());
@@ -20,7 +20,7 @@ public class ConverterClient {
 
     public static ClientFx convertToClientFx(Client client){
         ClientFx clientFx = new ClientFx();
-        clientFx.setId(client.getId());
+        clientFx.setIdClient(client.getId());
         clientFx.setName(client.getPerson().getName());
         clientFx.setSurname(client.getPerson().getSurname());
         clientFx.setBirthdayDate(client.getPerson().getBirthDate());

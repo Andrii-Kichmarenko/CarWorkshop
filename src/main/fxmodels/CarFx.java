@@ -13,6 +13,7 @@ public class CarFx {
     private SimpleStringProperty engineCapacity = new SimpleStringProperty();
     private ObjectProperty<LocalDate> purchaseDate = new SimpleObjectProperty<>();
     private ObjectProperty<LocalDate> sellDate= new SimpleObjectProperty<>();
+    private SimpleIntegerProperty idClient = new SimpleIntegerProperty();
 
     public String getBrand() {
         return brand.get();
@@ -72,5 +73,17 @@ public class CarFx {
 
     public void setSellDate(LocalDate sellDate) {
         this.sellDate.set(sellDate);
+    }
+
+    public int getIdClient() {
+        return idClient.get();
+    }
+
+    public SimpleIntegerProperty idClientProperty() {
+        return idClient;
+    }
+
+    public void setIdClient(int idClient) {
+        this.idClient.set(idClient);
     }
 }

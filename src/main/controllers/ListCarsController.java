@@ -10,7 +10,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.omg.CORBA.portable.ApplicationException;
+import utils.ChooseClientEvent;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -38,11 +41,14 @@ public class ListCarsController extends ScreenController{
     @FXML
     private Button cancelButton;
 
+    public static ListCarsController ref;
+
     public ListCarsController() {
     }
 
     public ListCarsController(Scene currentScene, String name, Parent parent) {
         super(currentScene, name, parent);
+        ref = this;
     }
 
     @FXML
@@ -66,6 +72,9 @@ public class ListCarsController extends ScreenController{
             this.carsTableView.setOnMouseClicked(this::getSelectedItem);
             this.nextButton.setOnMouseClicked(this::nextButtonAction);
             this.cancelButton.setOnMouseClicked(this::cancelButtonAction);
+
+        // init eventBus
+        EventBus.getDefault().register(this);
 //        }
     }
 
@@ -94,6 +103,16 @@ public class ListCarsController extends ScreenController{
         Main.saveAndFinish();
     }
 
+    public static ListCarsController getController(){
+        return ref;
+    }
 
+    @Subscribe
+    public void onChooseClient(ChooseClientEvent event){
+        launchCarFilter(event.getIdClient());
+    }
 
+    private void launchCarFilter(Integer idClient){
+        listCarsModel.filterCarList(idClient);
+    }
 }

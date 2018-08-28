@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class ClientFx {
 
-    private IntegerProperty id = new SimpleIntegerProperty();
+    private IntegerProperty idClient = new SimpleIntegerProperty();
     private SimpleStringProperty name = new SimpleStringProperty();
     private SimpleStringProperty surname= new SimpleStringProperty();
     private ObjectProperty<LocalDate> birthdayDate = new SimpleObjectProperty<>();
@@ -20,16 +20,16 @@ public class ClientFx {
  //   private ObjectProperty<LocalDate> addedDate = new SimpleObjectProperty(LocalDate.now());
 
 
-    public int getId() {
-        return id.get();
+    public int getIdClient() {
+        return idClient.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
+    public IntegerProperty idClientProperty() {
+        return idClient;
     }
 
-    public void setId(int id) {
-        this.id.set(id);
+    public void setIdClient(int idClient) {
+        this.idClient.set(idClient);
     }
 
     public String getName() {
