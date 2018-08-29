@@ -4,35 +4,27 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import models.Client;
-import org.greenrobot.eventbus.EventBus;
 import org.omg.CORBA.portable.ApplicationException;
 import utils.ExtensionUtility;
-import utils.converters.ConverterClient;
+import utils.converters.ClientConverter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListClientModel {
-    private ObservableList<ClientFx> clientFxObservableList = FXCollections.observableArrayList();
-//    private ObservableList<AuthorFx> authorFxObservableList = FXCollections.observableArrayList();
-//    private ObservableList<CategoryFx> categoryFxObservableList = FXCollections.observableArrayList();
-//
-//    private ObjectProperty<AuthorFx> authorFxObjectProperty = new SimpleObjectProperty<>();
-//    private ObjectProperty<CategoryFx> categoryFxObjectProperty = new SimpleObjectProperty<>();
 
+    private ObservableList<ClientFx> clientFxObservableList = FXCollections.observableArrayList();
     private List<ClientFx> clientFxList = new ArrayList<>();
 
     public void init() throws ApplicationException {
         Class instance = Client.class;
         List<Client> clients = ExtensionUtility.getExtension(instance);
-        clientFxList.clear();
-        clients.forEach(client -> {
-            this.clientFxList.add(ConverterClient.convertToClientFx(client));
-        });
-        this.clientFxObservableList.setAll(clientFxList);
-
- //       initAuthors();
- //       initCategory();
+        if(clients != null){
+            clients.forEach(client -> {
+                this.clientFxList.add(ClientConverter.convertToClientFx(client));
+            });
+            this.clientFxObservableList.setAll(clientFxList);
+        }
     }
 
     public ObservableList<ClientFx> getClientFxObservableList() {

@@ -3,7 +3,7 @@ package utils.converters;
 import fxmodels.CarFx;
 import models.Car;
 
-public class ConverterCar {
+public class CarConverter {
     public static CarFx convertToCarFx(Car car){
         CarFx carFx = new CarFx();
         carFx.setBrand(car.getBrand());

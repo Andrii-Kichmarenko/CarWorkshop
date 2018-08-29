@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListOrdersController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -37,17 +37,7 @@
    <bottom>
       <HBox alignment="CENTER_LEFT" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="26.0" layoutY="26.0" mnemonicParsing="false" text="Register client">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-            <Button layoutX="158.0" layoutY="26.0" mnemonicParsing="false" text="Register car">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" text="Add order">
+            <Button fx:id="addOrderButton" mnemonicParsing="false" text="Add order">
                <font>
                   <Font size="16.0" />
                </font>
@@ -59,11 +49,10 @@
       </HBox>
    </bottom>
    <center>
-      <TableView editable="true" prefHeight="200.0" prefWidth="200.0" stylesheets="@main.css" BorderPane.alignment="CENTER">
+      <TableView fx:id="ordersTableView" editable="true" prefHeight="200.0" prefWidth="200.0" stylesheets="@main.css" BorderPane.alignment="CENTER">
         <columns>
             <TableColumn maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Name" />
-          <TableColumn prefWidth="164.0" text="Name" />
-          <TableColumn prefWidth="178.0" text="Surname" />
+          <TableColumn prefWidth="342.0" text="Client" />
             <TableColumn prefWidth="305.0" text="Car" />
             <TableColumn prefWidth="193.0" text="Placed date" />
             <TableColumn prefWidth="180.0" text="Finish date" />

@@ -41,14 +41,11 @@ public class ListCarsController extends ScreenController{
     @FXML
     private Button cancelButton;
 
-    public static ListCarsController ref;
-
     public ListCarsController() {
     }
 
     public ListCarsController(Scene currentScene, String name, Parent parent) {
         super(currentScene, name, parent);
-        ref = this;
     }
 
     @FXML
@@ -92,7 +89,7 @@ public class ListCarsController extends ScreenController{
         if(carsTableView.getSelectionModel().getSelectedItem() != null)
             System.out.println("Next_bt_Pressed");
         try {
-            activate("Choose mechanic");
+            activate("choose_mechanic_view");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -101,10 +98,6 @@ public class ListCarsController extends ScreenController{
     @FXML
     private void cancelButtonAction(MouseEvent event){
         Main.saveAndFinish();
-    }
-
-    public static ListCarsController getController(){
-        return ref;
     }
 
     @Subscribe

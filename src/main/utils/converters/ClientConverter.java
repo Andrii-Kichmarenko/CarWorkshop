@@ -4,7 +4,7 @@ package utils.converters;
 import fxmodels.ClientFx;
 import models.Client;
 
-public class ConverterClient {
+public class ClientConverter {
 
     public static ClientFx convertToClientFx(Client client){
         ClientFx clientFx = new ClientFx();

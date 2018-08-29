@@ -10,12 +10,12 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class ScreenController {
+
     private static HashMap<String, Parent> screenMap = new HashMap<>();
     private static Scene currentScene;
     private Main ref;
     private ClientFx selectedClient;
     private Car selectedCar;
-
 
     public ScreenController() {
     }

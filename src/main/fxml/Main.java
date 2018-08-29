@@ -15,6 +15,7 @@ import java.io.File;
 public class Main extends Application {
 
     private static String pathToExtensionMap = "extensionMap.txt";
+    private static String pathToParent = "orders_view.fxml";
     private static String pathToParent1 = "choose_client_view.fxml";
     private static String pathToParent2 = "choose_car_view.fxml";
     private static String pathToParent3 = "choose_mechanic_view.fxml";
@@ -23,17 +24,19 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
+        Parent parent = FXMLLoader.load(getClass().getResource(pathToParent));
         Parent parent1 = FXMLLoader.load(getClass().getResource(pathToParent1));
         Parent parent2 = FXMLLoader.load(getClass().getResource(pathToParent2));
 //        Parent parent3 = FXMLLoader.load(getClass().getResource(pathToParent3));
  //       Parent parent4 = FXMLLoader.load(getClass().getResource(pathToParent4));
         primaryStage.setTitle("Car Workshop");
 
-        Scene scene = new Scene(parent1);
+        Scene scene = new Scene(parent);
         scene.getStylesheets().add("main.css");
-        ScreenController screenController = new ScreenController(scene, "Choose client" , parent1);
+        ScreenController screenController = new ScreenController(scene, "orders_view" , parent);
 
-        screenController.addScreen("Choose car", parent2);
+        screenController.addScreen("choose_client_view", parent1);
+        screenController.addScreen("choose_car_view", parent2);
         //screenController.addScreen("Choose mechanic", parent3);
         //screenController.addScreen("Add car", parent4);
 

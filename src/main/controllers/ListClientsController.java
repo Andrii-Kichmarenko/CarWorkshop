@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -59,14 +60,11 @@ public class ListClientsController extends ScreenController{
  //           DialogsUtils.errorDialog(e.getMessage());
         }
 
-        clientsTableView.setItems(this.listClientModel.getClientFxObservableList());
-
-        nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        surnameColumn.setCellValueFactory(cellData -> cellData.getValue().surnameProperty());
-        birthdateColumn.setCellValueFactory(cellData -> cellData.getValue().birthdayDateProperty());
-        registrationColumn.setCellValueFactory(cellData -> cellData.getValue().registrationDateProperty());
-        phoneNumberColumn.setCellValueFactory(cellData -> cellData.getValue().phoneNumberProperty());
-        emailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
+        if(!listClientModel.getClientFxObservableList().isEmpty()){
+            setUpTableView();
+        }else{
+            clientsTableView.setPlaceholder(new Label("Clients list is empty."));
+        }
 
         clientsTableView.setOnMouseClicked(this::getSelectedItem);
         nextButton.setOnMouseClicked(this::nextButtonAction);
@@ -90,7 +88,7 @@ public class ListClientsController extends ScreenController{
         //DELETE
         setSelectedClient(clientsTableView.getSelectionModel().getSelectedItem());
         try {
-            activate("Choose car");
+            activate("choose_car_view");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -99,6 +97,17 @@ public class ListClientsController extends ScreenController{
     @FXML
     private void cancelButtonAction(MouseEvent event){
         Main.saveAndFinish();
+    }
+
+    public void setUpTableView(){
+        clientsTableView.setItems(this.listClientModel.getClientFxObservableList());
+
+        nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        surnameColumn.setCellValueFactory(cellData -> cellData.getValue().surnameProperty());
+        birthdateColumn.setCellValueFactory(cellData -> cellData.getValue().birthdayDateProperty());
+        registrationColumn.setCellValueFactory(cellData -> cellData.getValue().registrationDateProperty());
+        phoneNumberColumn.setCellValueFactory(cellData -> cellData.getValue().phoneNumberProperty());
+        emailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
     }
 
 }

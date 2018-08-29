@@ -70,7 +70,7 @@ public abstract class ExtensionUtility implements Serializable {
     }
 
     public static Car getCar(int idCar){
-        ArrayList<Car> carsOrigin = new ArrayList<Car>((Collection<? extends Car>) extensionMap.get(Car.class));
+        ArrayList<Car> carsOrigin = getExtension(Car.class);
         Optional<Car> optional =  carsOrigin.stream().filter(car -> car.getIdCar() == idCar).findFirst();
         if(optional.isPresent())
             return optional.get();
@@ -78,7 +78,7 @@ public abstract class ExtensionUtility implements Serializable {
     }
 
     public static Mechanic getMechanic(int idMechanic){
-        ArrayList<Mechanic> mechanicsOrigin = new ArrayList<Mechanic>((Collection<? extends Mechanic>) extensionMap.get(Mechanic.class));
+        ArrayList<Mechanic> mechanicsOrigin = getExtension(Mechanic.class);
         Optional<Mechanic> optional =  mechanicsOrigin.stream().filter(mechanic -> mechanic.getPerson().getIdPerson() == idMechanic).findFirst();
         if(optional.isPresent())
             return optional.get();

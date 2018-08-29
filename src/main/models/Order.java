@@ -72,6 +72,10 @@ public class Order extends ExtensionUtility {
         }
     }
 
+    public Car getCar() {
+        return car;
+    }
+
     public void addCarPart(CarPart carPart) {
         if(!carParts.contains(carPart)) {
             carParts.add(carPart);

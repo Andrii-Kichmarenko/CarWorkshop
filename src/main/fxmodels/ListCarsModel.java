@@ -5,10 +5,9 @@ import javafx.collections.ObservableList;
 import models.Car;
 import org.omg.CORBA.portable.ApplicationException;
 import utils.ExtensionUtility;
-import utils.converters.ConverterCar;
+import utils.converters.CarConverter;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class ListCarsModel {
@@ -17,11 +16,12 @@ public class ListCarsModel {
 
     public void init(ClientFx selectedClient) throws ApplicationException {
         List<Car> carsOrigin = ExtensionUtility.getExtension(Car.class);
-        carsFxList.clear();
-        carsOrigin.forEach(car -> {
-            this.carsFxList.add(ConverterCar.convertToCarFx(car));
-        });
-        this.carFxObservableList.setAll(carsFxList);
+        if(carsOrigin != null){
+            carsOrigin.forEach(car -> {
+                this.carsFxList.add(CarConverter.convertToCarFx(car));
+            });
+            this.carFxObservableList.setAll(carsFxList);
+        }
     }
 
     public ObservableList<CarFx> getCarFxObservableList() {
