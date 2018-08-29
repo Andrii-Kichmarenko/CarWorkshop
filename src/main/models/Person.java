@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 public class Person extends ExtensionUtility {
 
+    private static int idCounter = 0;
+
+    private int idPerson;
     private String name;
     private String surname;
     private LocalDate birthDate;
@@ -17,10 +20,12 @@ public class Person extends ExtensionUtility {
 
     public Person(String name, String surname, LocalDate birthDate) {
         super();
+        idPerson = idCounter++;
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
-        clients = new ArrayList<Client>();
+        clients = new ArrayList<>();
+        employees = new ArrayList<>();
     }
 
     public void addEmployee(Employee employee){
@@ -65,5 +70,9 @@ public class Person extends ExtensionUtility {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public int getIdPerson() {
+        return idPerson;
     }
 }

@@ -6,8 +6,6 @@ import java.time.LocalDate;
 
 public class CarFx {
 
-    //TODO
-
     private SimpleStringProperty brand = new SimpleStringProperty();
     private SimpleStringProperty model = new SimpleStringProperty();
     private SimpleStringProperty engineCapacity = new SimpleStringProperty();

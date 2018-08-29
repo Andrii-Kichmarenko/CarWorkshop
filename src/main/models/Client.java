@@ -11,8 +11,6 @@ import java.util.List;
 
 public class Client extends ExtensionUtility implements Serializable {
 
-    private static int idCounter = 0;
-    private int id;
     private LocalDate registrationDate;
     private String emailAdress;
 
@@ -21,9 +19,8 @@ public class Client extends ExtensionUtility implements Serializable {
 
     private Client (Person person, LocalDate registrationDate) {
         super();
-        id = idCounter++;
-        this.registrationDate = registrationDate;
         this.person = person;
+        this.registrationDate = registrationDate;
         cars = new ArrayList<>();
     }
 
@@ -48,14 +45,6 @@ public class Client extends ExtensionUtility implements Serializable {
             cars.remove(car);
             car.removeClient();
         }
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public LocalDate getRegistrationDate() {

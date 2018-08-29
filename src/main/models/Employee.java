@@ -20,6 +20,8 @@ public abstract class Employee extends ExtensionUtility {
         this.hireDate = hireDate;
     }
 
+    public Person getPerson() { return person; }
+
     public LocalDate getFiredDate() {
         return firedDate;
     }

@@ -1,8 +1,8 @@
-package utils;
+package events;
 
 public class ChooseClientEvent {
 
-    public Integer idClient;
+    private Integer idClient;
 
     public ChooseClientEvent(int idClient) {
         this.idClient = idClient;

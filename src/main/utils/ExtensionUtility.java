@@ -2,6 +2,7 @@ package utils;
 
 import models.Car;
 import models.Client;
+import models.Mechanic;
 
 import java.io.*;
 import java.util.*;
@@ -66,6 +67,22 @@ public abstract class ExtensionUtility implements Serializable {
         } catch (IOException i) {
             i.printStackTrace();
         }
+    }
+
+    public static Car getCar(int idCar){
+        ArrayList<Car> carsOrigin = new ArrayList<Car>((Collection<? extends Car>) extensionMap.get(Car.class));
+        Optional<Car> optional =  carsOrigin.stream().filter(car -> car.getIdCar() == idCar).findFirst();
+        if(optional.isPresent())
+            return optional.get();
+        return null;
+    }
+
+    public static Mechanic getMechanic(int idMechanic){
+        ArrayList<Mechanic> mechanicsOrigin = new ArrayList<Mechanic>((Collection<? extends Mechanic>) extensionMap.get(Mechanic.class));
+        Optional<Mechanic> optional =  mechanicsOrigin.stream().filter(mechanic -> mechanic.getPerson().getIdPerson() == idMechanic).findFirst();
+        if(optional.isPresent())
+            return optional.get();
+        return null;
     }
 
     // additional methods

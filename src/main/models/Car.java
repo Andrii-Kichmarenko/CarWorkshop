@@ -8,7 +8,9 @@ import java.util.ArrayList;
 public class Car extends ExtensionUtility {
 
     public static int VINlength = 17;
+    private static int idCounter = 0;
 
+    private int idCar;
     private String VIN; //17characters
     private String brand;
     private String model;
@@ -22,6 +24,7 @@ public class Car extends ExtensionUtility {
 
     public Car(String VIN, String brand, String model, double engineSpacity, LocalDate purchaseDate) {
         super();
+        idCar = idCounter++;
         if(VIN.length() != VINlength){
             throw new IllegalArgumentException("VIN must be 17 characters");
         }
@@ -64,7 +67,7 @@ public class Car extends ExtensionUtility {
         }
     }
 
-
+    public int getIdCar() { return idCar; }
 
     public String getVIN() {
         return VIN;

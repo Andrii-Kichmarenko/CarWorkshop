@@ -13,7 +13,7 @@ import javafx.scene.input.MouseEvent;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.omg.CORBA.portable.ApplicationException;
-import utils.ChooseClientEvent;
+import events.ChooseClientEvent;
 
 import java.io.IOException;
 import java.time.LocalDate;

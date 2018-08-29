@@ -11,7 +11,7 @@ public class ConverterCar {
         carFx.setEngineCapacity(String.valueOf(car.getEngineSpacity()));
         carFx.setPurchaseDate(car.getPurchaseDate());
         carFx.setSellDate(car.getSellDate());
-        carFx.setIdClient(car.getClient().getId());
+        carFx.setIdClient(car.getClient().getPerson().getIdPerson());
         return carFx;
     }
 }
