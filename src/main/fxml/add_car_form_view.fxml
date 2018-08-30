@@ -11,17 +11,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="467.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddCarController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER_LEFT" spacing="30.0">
                <children>
-                  <Label alignment="CENTER" text="Add new car ">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
                   <HBox spacing="5.0">
                      <children>
                         <Label alignment="CENTER" text="Client:">
@@ -29,7 +24,8 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" text="Andrii Kichmareko">
+                        <Region prefHeight="21.0" prefWidth="117.0" />
+                        <Label fx:id="clientInfoLable" alignment="CENTER" text="Client Info">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -47,12 +43,12 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Cancel">
+            <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button layoutX="853.0" layoutY="26.0" mnemonicParsing="false" text="Save">
+            <Button fx:id="saveButton" layoutX="853.0" layoutY="26.0" mnemonicParsing="false" text="Save">
                <font>
                   <Font size="16.0" />
                </font>
@@ -68,13 +64,13 @@
          <children>
             <HBox alignment="CENTER_LEFT" spacing="15.0">
                <children>
-                  <Label text="VIN:">
+                  <Label text="* VIN:">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Region HBox.hgrow="ALWAYS" />
-                  <TextField prefWidth="284.0" text="2G1FC1E37C9153231" />
+                  <TextField fx:id="vinTextField" prefHeight="26.0" prefWidth="252.0" text="2G1FC1E37C9153231" />
                </children>
                <padding>
                   <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
@@ -82,13 +78,13 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" spacing="15.0">
                <children>
-                  <Label text="Brand:">
+                  <Label text="* Brand:">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Region HBox.hgrow="ALWAYS" />
-                  <TextField prefWidth="284.0" text="Mercedes-Benz" />
+                  <Region prefHeight="26.0" prefWidth="77.0" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="brandTextField" prefHeight="26.0" prefWidth="251.0" text="Mercedes-Benz" />
                </children>
                <padding>
                   <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
@@ -96,13 +92,13 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="68.0" spacing="15.0">
                <children>
-                  <Label text="Model:">
+                  <Label text="* Model:">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Region HBox.hgrow="ALWAYS" />
-                  <TextField prefWidth="284.0" text="E220" />
+                  <TextField fx:id="modelTextField" prefHeight="26.0" prefWidth="252.0" text="E220" />
                </children>
                <padding>
                   <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
@@ -110,13 +106,13 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="126.0" spacing="15.0">
                <children>
-                  <Label text="Engine Capacity:">
+                  <Label text="* Engine Capacity:">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Region HBox.hgrow="ALWAYS" />
-                  <TextField prefWidth="284.0" text="2.0" />
+                  <TextField fx:id="engineCapacityTextField" prefHeight="26.0" prefWidth="198.0" text="2.0" />
                </children>
                <padding>
                   <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
@@ -130,7 +126,7 @@
                      </font>
                   </Label>
                   <Region HBox.hgrow="ALWAYS" />
-                  <DatePicker promptText="20-01-2018" />
+                  <DatePicker fx:id="purchaseDatePicker" promptText="20-01-2018" />
                </children>
                <padding>
                   <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
@@ -141,6 +137,9 @@
                <padding>
                   <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                </padding>
+               <children>
+                  <Label fx:id="errorLable" style="-fx-text-fill: red;" />
+               </children>
             </HBox>
          </children>
       </VBox>

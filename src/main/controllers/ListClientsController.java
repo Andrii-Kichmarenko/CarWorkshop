@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.omg.CORBA.portable.ApplicationException;
 import events.ChooseClientEvent;
 import utils.OrderComposer;
@@ -69,6 +70,7 @@ public class ListClientsController extends ScreenController{
         clientsTableView.setOnMouseClicked(this::getSelectedItem);
         nextButton.setOnMouseClicked(this::nextButtonAction);
         cancelButton.setOnMouseClicked(this::cancelButtonAction);
+
     }
 
     @FXML
@@ -101,6 +103,8 @@ public class ListClientsController extends ScreenController{
             e.printStackTrace();
         }
     }
+
+
 
     public void setUpTableView(){
         clientsTableView.setItems(this.listClientsModel.getClientFxObservableList());

@@ -69,6 +69,14 @@ public abstract class ExtensionUtility implements Serializable {
         }
     }
 
+    public static Client getClient(int idClient){
+        ArrayList<Client> clientsOrigin = getExtension(Client.class);
+        Optional<Client> optional =  clientsOrigin.stream().filter(client -> client.getPerson().getIdPerson() == idClient).findFirst();
+        if(optional.isPresent())
+            return optional.get();
+        return null;
+    }
+
     public static Car getCar(int idCar){
         ArrayList<Car> carsOrigin = getExtension(Car.class);
         Optional<Car> optional =  carsOrigin.stream().filter(car -> car.getIdCar() == idCar).findFirst();

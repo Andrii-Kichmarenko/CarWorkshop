@@ -33,10 +33,21 @@ public class ListCarsModel {
     }
 
     public void filterCarList(Integer idClient) {
+        carsFxList.clear();
+        List<Car> carsOrigin = ExtensionUtility.getExtension(Car.class);
+        if(carsOrigin != null){
+            carsOrigin.forEach(car -> {
+                if(car.getClient().getPerson().getIdPerson() == idClient){
+                    this.carsFxList.add(CarConverter.convertToCarFx(car));
+                }
+            });
+            this.carFxObservableList.setAll(carsFxList);
+        }
+    }
 
-        // ХУЙОВО
-        List<CarFx> filteredCarsFxList = new ArrayList<>(carsFxList);
-        filteredCarsFxList.removeIf(carFx -> carFx.idCarProperty().get() != idClient);
-        this.carFxObservableList.setAll(filteredCarsFxList);
+    public void addCar(Car newCar) {
+        CarFx newCarFx = CarConverter.convertToCarFx(newCar);
+        this.carsFxList.add(newCarFx);
+        this.carFxObservableList.add(newCarFx);
     }
 }

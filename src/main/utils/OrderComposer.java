@@ -1,20 +1,24 @@
 package utils;
 
-import events.ChooseCarEvent;
-import events.ChooseMechanicEvent;
-import events.CreateOrderEvent;
-import events.FilledOrderEvent;
+import events.*;
 import models.Order;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 public class OrderComposer {
 
+    private Integer idClient;
     private Integer idCar;
-    private Integer idMechaic;
+    private Integer idMechanic;
+
 
     public OrderComposer() {
         EventBus.getDefault().register(this);
+    }
+
+    @Subscribe
+    public void onChooseClientEvent(ChooseClientEvent event){
+        setIdClient(event.getIdClient());
     }
 
     @Subscribe
@@ -31,8 +35,12 @@ public class OrderComposer {
     public void onCreateOrder(CreateOrderEvent event){
         Order order = event.getOrder();
         order.setCar(ExtensionUtility.getCar(idCar));
-        order.setMechanic(ExtensionUtility.getMechanic(idMechaic));
+        order.setMechanic(ExtensionUtility.getMechanic(idMechanic));
         EventBus.getDefault().post(new FilledOrderEvent(order));
+    }
+
+    private void setIdClient(Integer idClient) {
+        this.idClient = idClient;
     }
 
     public void setIdCar(Integer idCar) {
@@ -40,6 +48,6 @@ public class OrderComposer {
     }
 
     public void setIdMechaic(Integer idMechaic) {
-        this.idMechaic = idMechaic;
+        this.idMechanic = idMechaic;
     }
 }

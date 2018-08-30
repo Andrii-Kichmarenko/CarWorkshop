@@ -43,7 +43,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="Add Car">
+            <Button fx:id="addCarButton" mnemonicParsing="false" text="Add car">
                <font>
                   <Font size="16.0" />
                </font>

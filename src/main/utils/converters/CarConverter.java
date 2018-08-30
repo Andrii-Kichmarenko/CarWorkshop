@@ -14,4 +14,15 @@ public class CarConverter {
         carFx.setIdCar(car.getIdCar());
         return carFx;
     }
+
+    public static Car convertToCar(CarFx carFx){
+        Car car = new Car(
+            carFx.getVin(),
+            carFx.getBrand(),
+            carFx.getModel(),
+            Double.valueOf(carFx.getEngineCapacity()),
+            carFx.getPurchaseDate()
+        );
+        return car;
+    }
 }

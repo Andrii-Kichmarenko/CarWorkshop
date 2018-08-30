@@ -13,14 +13,11 @@ public class ScreenController {
 
     private static HashMap<String, Parent> screenMap = new HashMap<>();
     private static Scene currentScene;
-    private Main ref;
-    private Car selectedCar;
 
     public ScreenController() {
     }
 
     public ScreenController(Scene currentScene, String name, Parent parent) {
-        this.ref=ref;
         this.currentScene = currentScene;
         screenMap.put(name, parent);
     }
@@ -34,11 +31,4 @@ public class ScreenController {
         currentScene.getStylesheets().add("main.css");
     }
 
-    public Car getSelectedCar() {
-        return selectedCar;
-    }
-
-    public void setSelectedCar(Car selectedCar) {
-        this.selectedCar = selectedCar;
-    }
 }

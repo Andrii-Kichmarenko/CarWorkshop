@@ -6,12 +6,19 @@ import java.time.LocalDate;
 
 public class CarFx {
 
+    private SimpleStringProperty vin = new SimpleStringProperty();
     private SimpleStringProperty brand = new SimpleStringProperty();
     private SimpleStringProperty model = new SimpleStringProperty();
     private SimpleStringProperty engineCapacity = new SimpleStringProperty();
     private ObjectProperty<LocalDate> purchaseDate = new SimpleObjectProperty<>();
     private ObjectProperty<LocalDate> sellDate= new SimpleObjectProperty<>();
     private SimpleIntegerProperty idCar = new SimpleIntegerProperty();
+
+    public String getVin() {return vin.get(); }
+
+    public SimpleStringProperty vinProperty() { return vin; }
+
+    public void setVin(String vin) { this.vin.set(vin); }
 
     public String getBrand() {
         return brand.get();

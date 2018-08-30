@@ -1,6 +1,7 @@
 package fxml;
 
 import controllers.ScreenController;
+import controllers.SecondScreenController;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -28,20 +29,20 @@ public class Main extends Application {
         Parent parent1 = FXMLLoader.load(getClass().getResource(pathToParent1));
         Parent parent2 = FXMLLoader.load(getClass().getResource(pathToParent2));
         Parent parent3 = FXMLLoader.load(getClass().getResource(pathToParent3));
- //       Parent parent4 = FXMLLoader.load(getClass().getResource(pathToParent4));
+        Parent parent4 = FXMLLoader.load(getClass().getResource(pathToParent4));
         primaryStage.setTitle("Car Workshop");
 
         Scene scene = new Scene(parent);
         scene.getStylesheets().add("main.css");
         ScreenController screenController = new ScreenController(scene, "orders_view" , parent);
-
         screenController.addScreen("choose_client_view", parent1);
         screenController.addScreen("choose_car_view", parent2);
         screenController.addScreen("choose_mechanic_view", parent3);
-        //screenController.addScreen("Add car", parent4);
-
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        Scene scene1 = new Scene(parent4);
+        SecondScreenController secondScreenController = new SecondScreenController(scene1,"add_car_form_view", parent4);
 
     }
 
