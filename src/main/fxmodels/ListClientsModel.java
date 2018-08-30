@@ -11,7 +11,7 @@ import utils.converters.ClientConverter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListClientModel {
+public class ListClientsModel {
 
     private ObservableList<ClientFx> clientFxObservableList = FXCollections.observableArrayList();
     private List<ClientFx> clientFxList = new ArrayList<>();
@@ -31,7 +31,4 @@ public class ListClientModel {
         return clientFxObservableList;
     }
 
-    public void setBookFxObservableList(ObservableList<ClientFx> clientFxObservableList) {
-        this.clientFxObservableList = clientFxObservableList;
-    }
 }

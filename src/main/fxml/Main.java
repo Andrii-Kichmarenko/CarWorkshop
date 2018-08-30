@@ -27,7 +27,7 @@ public class Main extends Application {
         Parent parent = FXMLLoader.load(getClass().getResource(pathToParent));
         Parent parent1 = FXMLLoader.load(getClass().getResource(pathToParent1));
         Parent parent2 = FXMLLoader.load(getClass().getResource(pathToParent2));
-//        Parent parent3 = FXMLLoader.load(getClass().getResource(pathToParent3));
+        Parent parent3 = FXMLLoader.load(getClass().getResource(pathToParent3));
  //       Parent parent4 = FXMLLoader.load(getClass().getResource(pathToParent4));
         primaryStage.setTitle("Car Workshop");
 
@@ -37,7 +37,7 @@ public class Main extends Application {
 
         screenController.addScreen("choose_client_view", parent1);
         screenController.addScreen("choose_car_view", parent2);
-        //screenController.addScreen("Choose mechanic", parent3);
+        screenController.addScreen("choose_mechanic_view", parent3);
         //screenController.addScreen("Add car", parent4);
 
         primaryStage.setScene(scene);

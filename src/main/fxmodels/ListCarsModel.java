@@ -14,7 +14,7 @@ public class ListCarsModel {
     private ObservableList<CarFx> carFxObservableList = FXCollections.observableArrayList();
     private List<CarFx> carsFxList = new ArrayList<>();
 
-    public void init(ClientFx selectedClient) throws ApplicationException {
+    public void init() throws ApplicationException {
         List<Car> carsOrigin = ExtensionUtility.getExtension(Car.class);
         if(carsOrigin != null){
             carsOrigin.forEach(car -> {
@@ -33,8 +33,10 @@ public class ListCarsModel {
     }
 
     public void filterCarList(Integer idClient) {
+
+        // ХУЙОВО
         List<CarFx> filteredCarsFxList = new ArrayList<>(carsFxList);
-        filteredCarsFxList.removeIf(carFx -> carFx.idClientProperty().get() != idClient);
+        filteredCarsFxList.removeIf(carFx -> carFx.idCarProperty().get() != idClient);
         this.carFxObservableList.setAll(filteredCarsFxList);
     }
 }

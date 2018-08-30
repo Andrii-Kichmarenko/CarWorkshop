@@ -3,7 +3,7 @@ package utils;
 import events.ChooseCarEvent;
 import events.ChooseMechanicEvent;
 import events.CreateOrderEvent;
-import events.FullFillOrderEvent;
+import events.FilledOrderEvent;
 import models.Order;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -28,11 +28,11 @@ public class OrderComposer {
     }
 
     @Subscribe
-    private void onCreateOrder(CreateOrderEvent event){
+    public void onCreateOrder(CreateOrderEvent event){
         Order order = event.getOrder();
         order.setCar(ExtensionUtility.getCar(idCar));
         order.setMechanic(ExtensionUtility.getMechanic(idMechaic));
-        EventBus.getDefault().post(new FullFillOrderEvent(order));
+        EventBus.getDefault().post(new FilledOrderEvent(order));
     }
 
     public void setIdCar(Integer idCar) {

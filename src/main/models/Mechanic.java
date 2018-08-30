@@ -26,7 +26,6 @@ public class Mechanic extends Employee {
             throw new Exception("Person doesn't exist.");
         }
         Mechanic mechanic = new Mechanic(person, hireDate, category, monthlySalaryBonus);
-        person.addEmployee(mechanic);
         return mechanic;
     }
 

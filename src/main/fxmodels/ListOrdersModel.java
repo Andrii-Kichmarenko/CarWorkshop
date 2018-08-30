@@ -14,9 +14,10 @@ public class ListOrdersModel {
 
     private ObservableList<OrderFx> orderFxObservableList = FXCollections.observableArrayList();
     private List<OrderFx> orderFxList = new ArrayList<>();
+    List<Order> ordersOrigin;
 
     public void init()throws ApplicationException{
-        List<Order> ordersOrigin = ExtensionUtility.getExtension(Order.class);
+        ordersOrigin = ExtensionUtility.getExtension(Order.class);
         if(ordersOrigin  != null){
             ordersOrigin.forEach(order -> {
                 this.orderFxList.add(OrderConverter.convertToOrderFx(order));
@@ -29,5 +30,12 @@ public class ListOrdersModel {
         return orderFxObservableList;
     }
 
-    //TODO filter
+    public void refreshList() {
+        orderFxList.clear();
+        ordersOrigin = ExtensionUtility.getExtension(Order.class);
+        ordersOrigin.forEach(order -> {
+            this.orderFxList.add(OrderConverter.convertToOrderFx(order));
+        });
+        orderFxObservableList.setAll(orderFxList);
+    }
 }

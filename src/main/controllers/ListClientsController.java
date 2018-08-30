@@ -1,7 +1,7 @@
 package controllers;
 
 import fxmodels.ClientFx;
-import fxmodels.ListClientModel;
+import fxmodels.ListClientsModel;
 import fxml.Main;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import org.greenrobot.eventbus.EventBus;
 import org.omg.CORBA.portable.ApplicationException;
 import events.ChooseClientEvent;
+import utils.OrderComposer;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -35,14 +36,13 @@ public class ListClientsController extends ScreenController{
     @FXML
     private TableColumn<ClientFx, String> emailColumn;
 
-    private ListClientModel listClientModel;
+    private ListClientsModel listClientsModel;
 
     @FXML
     private Button nextButton;
 
     @FXML
     private Button cancelButton;
-
 
     public ListClientsController() {
     }
@@ -53,14 +53,14 @@ public class ListClientsController extends ScreenController{
 
     @FXML
     void initialize() {
-        this.listClientModel = new ListClientModel();
+        this.listClientsModel = new ListClientsModel();
         try {
-            this.listClientModel.init();
+            this.listClientsModel.init();
         } catch (ApplicationException e) {
  //           DialogsUtils.errorDialog(e.getMessage());
         }
 
-        if(!listClientModel.getClientFxObservableList().isEmpty()){
+        if(!listClientsModel.getClientFxObservableList().isEmpty()){
             setUpTableView();
         }else{
             clientsTableView.setPlaceholder(new Label("Clients list is empty."));
@@ -85,8 +85,7 @@ public class ListClientsController extends ScreenController{
         System.out.println("Next_bt_Pressed");
         Integer selectedClient = clientsTableView.getSelectionModel().getSelectedItem().getIdClient();
         EventBus.getDefault().post(new ChooseClientEvent(selectedClient));
-        //DELETE
-        setSelectedClient(clientsTableView.getSelectionModel().getSelectedItem());
+
         try {
             activate("choose_car_view");
         } catch (IOException e) {
@@ -96,11 +95,15 @@ public class ListClientsController extends ScreenController{
 
     @FXML
     private void cancelButtonAction(MouseEvent event){
-        Main.saveAndFinish();
+        try {
+            activate("orders_view");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setUpTableView(){
-        clientsTableView.setItems(this.listClientModel.getClientFxObservableList());
+        clientsTableView.setItems(this.listClientsModel.getClientFxObservableList());
 
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         surnameColumn.setCellValueFactory(cellData -> cellData.getValue().surnameProperty());

@@ -1,5 +1,7 @@
 package controllers;
 
+import events.ChooseMechanicEvent;
+import events.FilledOrderEvent;
 import fxmodels.ListOrdersModel;
 import fxmodels.OrderFx;
 import javafx.fxml.FXML;
@@ -11,7 +13,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import models.Order;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.omg.CORBA.portable.ApplicationException;
+import utils.OrderComposer;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -36,6 +41,10 @@ public class ListOrdersController extends ScreenController {
     @FXML
     private Button addOrderButton;
 
+    private boolean isTableEmpty;
+
+    private OrderComposer orderComposer;
+
     public ListOrdersController() {
     }
 
@@ -51,18 +60,22 @@ public class ListOrdersController extends ScreenController {
         } catch (ApplicationException e) {
             e.printStackTrace();
         }
-        if(!listOrdersModel.getOrderFxObservableList().isEmpty()){
+        isTableEmpty = listOrdersModel.getOrderFxObservableList().isEmpty();
+        if(!isTableEmpty){
             setUpTableView();
         }else{
             ordersTableView.setPlaceholder(new Label("Orders list is empty. Press \"Add order\" button to create new one."));
         }
 
         addOrderButton.setOnMouseClicked(this::addOrderButtonAction);
+
+        EventBus.getDefault().register(this);
     }
 
     @FXML
     private void addOrderButtonAction(MouseEvent event) {
         System.out.println("AddOrder_bt_Pressed");
+        orderComposer = new OrderComposer();
         try {
             activate("choose_client_view");
         } catch (IOException e) {
@@ -76,6 +89,19 @@ public class ListOrdersController extends ScreenController {
         clientInfoColumn.setCellValueFactory(cellData -> cellData.getValue().clientInfoProperty());
         carInfoColumn.setCellValueFactory(cellData -> cellData.getValue().carInfoProperty());
         placedDateColumn.setCellValueFactory(cellData -> cellData.getValue().placedDateProperty());
-        finishedDateColumn.setCellValueFactory(cellData -> cellData.getValue().placedDateProperty());
+        finishedDateColumn.setCellValueFactory(cellData -> cellData.getValue().finishDateProperty());
+        statusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+    }
+
+    @Subscribe
+    public void onFilledOrderEvent(FilledOrderEvent event){
+        refreshOredersList();
+    }
+
+    private void refreshOredersList(){
+        listOrdersModel.refreshList();
+        if(isTableEmpty){
+            setUpTableView();
+        }
     }
 }

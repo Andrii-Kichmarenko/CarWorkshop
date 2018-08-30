@@ -52,11 +52,11 @@
       <TableView fx:id="ordersTableView" editable="true" prefHeight="200.0" prefWidth="200.0" stylesheets="@main.css" BorderPane.alignment="CENTER">
         <columns>
             <TableColumn maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Name" />
-          <TableColumn prefWidth="342.0" text="Client" />
-            <TableColumn prefWidth="305.0" text="Car" />
-            <TableColumn prefWidth="193.0" text="Placed date" />
-            <TableColumn prefWidth="180.0" text="Finish date" />
-            <TableColumn prefWidth="162.0" text="Status" />
+          <TableColumn fx:id="clientInfoColumn" prefWidth="342.0" text="Client" />
+            <TableColumn fx:id="carInfoColumn" prefWidth="305.0" text="Car" />
+            <TableColumn fx:id="placedDateColumn" prefWidth="193.0" text="Placed date" />
+            <TableColumn fx:id="finishedDateColumn" prefWidth="180.0" text="Finish date" />
+            <TableColumn fx:id="statusColumn" prefWidth="162.0" text="Status" />
         </columns>
       </TableView>
    </center>

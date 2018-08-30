@@ -17,6 +17,7 @@ public abstract class Employee extends ExtensionUtility {
     public Employee(Person person, LocalDate hireDate) {
         super();
         this.person = person;
+        person.setEmployee(this);
         this.hireDate = hireDate;
     }
 

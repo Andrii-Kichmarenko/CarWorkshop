@@ -29,7 +29,7 @@ public class Client extends ExtensionUtility implements Serializable {
             throw new Exception("Person doesn't exist.");
         }
         Client client = new Client(person, registrationDate);
-        person.addClient(client);
+        person.setEmployee(client);
         return client;
     }
 

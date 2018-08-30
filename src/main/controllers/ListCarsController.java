@@ -1,12 +1,13 @@
 package controllers;
 
+import events.ChooseCarEvent;
 import fxmodels.CarFx;
 import fxmodels.ListCarsModel;
-import fxml.Main;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -23,7 +24,7 @@ public class ListCarsController extends ScreenController{
     @FXML
     private TableView<CarFx> carsTableView;
     @FXML
-    private TableColumn<CarFx, String> BrandColumn;
+    private TableColumn<CarFx, String> brandColumn;
     @FXML
     private TableColumn<CarFx, String> modelColumn;
     @FXML
@@ -41,6 +42,8 @@ public class ListCarsController extends ScreenController{
     @FXML
     private Button cancelButton;
 
+    private boolean isTableEmpty;
+
     public ListCarsController() {
     }
 
@@ -51,28 +54,24 @@ public class ListCarsController extends ScreenController{
     @FXML
     void initialize() {
         this.listCarsModel = new ListCarsModel();
-//        if(getSelectedClient() != null){
-            try {
-                this.listCarsModel.init(getSelectedClient());
-            } catch (ApplicationException e) {
-                //           DialogsUtils.errorDialog(e.getMessage());
-            }
+        try {
+            this.listCarsModel.init();
+        } catch (ApplicationException e) {
+            //           DialogsUtils.errorDialog(e.getMessage());
+        }
+        isTableEmpty = listCarsModel.getCarFxObservableList().isEmpty();
+        if(!isTableEmpty){
+            setUpTableView();
+        }else{
+            carsTableView.setPlaceholder(new Label("Client hasn't registered cars. Press \"Add Car\" to add new one."));
+        }
 
-            this.carsTableView.setItems(this.listCarsModel.getCarFxObservableList());
-
-            this.BrandColumn.setCellValueFactory(cellData -> cellData.getValue().brandProperty());
-            this.modelColumn.setCellValueFactory(cellData -> cellData.getValue().modelProperty());
-            this.engineCapacityColumn.setCellValueFactory(cellData -> cellData.getValue().engineCapacityProperty());
-            this.purchaseDateColumn.setCellValueFactory(cellData -> cellData.getValue().purchaseDateProperty());
-            this.sellDateColumn.setCellValueFactory(cellData -> cellData.getValue().sellDateProperty());
-
-            this.carsTableView.setOnMouseClicked(this::getSelectedItem);
-            this.nextButton.setOnMouseClicked(this::nextButtonAction);
-            this.cancelButton.setOnMouseClicked(this::cancelButtonAction);
+        this.carsTableView.setOnMouseClicked(this::getSelectedItem);
+        this.nextButton.setOnMouseClicked(this::nextButtonAction);
+        this.cancelButton.setOnMouseClicked(this::cancelButtonAction);
 
         // init eventBus
         EventBus.getDefault().register(this);
-//        }
     }
 
     @FXML
@@ -86,8 +85,10 @@ public class ListCarsController extends ScreenController{
 
     @FXML
     private void nextButtonAction(MouseEvent event) {
-        if(carsTableView.getSelectionModel().getSelectedItem() != null)
-            System.out.println("Next_bt_Pressed");
+        System.out.println("Next_bt_Pressed");
+        Integer selectedCar = carsTableView.getSelectionModel().getSelectedItem().getIdCar();
+        EventBus.getDefault().post(new ChooseCarEvent(selectedCar));
+
         try {
             activate("choose_mechanic_view");
         } catch (IOException e) {
@@ -97,7 +98,21 @@ public class ListCarsController extends ScreenController{
 
     @FXML
     private void cancelButtonAction(MouseEvent event){
-        Main.saveAndFinish();
+        try {
+            activate("orders_view");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setUpTableView(){
+        this.carsTableView.setItems(this.listCarsModel.getCarFxObservableList());
+
+        this.brandColumn.setCellValueFactory(cellData -> cellData.getValue().brandProperty());
+        this.modelColumn.setCellValueFactory(cellData -> cellData.getValue().modelProperty());
+        this.engineCapacityColumn.setCellValueFactory(cellData -> cellData.getValue().engineCapacityProperty());
+        this.purchaseDateColumn.setCellValueFactory(cellData -> cellData.getValue().purchaseDateProperty());
+        this.sellDateColumn.setCellValueFactory(cellData -> cellData.getValue().sellDateProperty());
     }
 
     @Subscribe
@@ -107,5 +122,8 @@ public class ListCarsController extends ScreenController{
 
     private void launchCarFilter(Integer idClient){
         listCarsModel.filterCarList(idClient);
+        if(isTableEmpty){
+            setUpTableView();
+        }
     }
 }

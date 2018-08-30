@@ -14,12 +14,6 @@ public class ClientFx {
     private SimpleStringProperty phoneNumber = new SimpleStringProperty();
     private SimpleStringProperty email = new SimpleStringProperty();
 
-    //TODO
-  //  private ObjectProperty<CarFx> carFx = new SimpleObjectProperty<>();
-
- //   private ObjectProperty<LocalDate> addedDate = new SimpleObjectProperty(LocalDate.now());
-
-
     public int getIdClient() {
         return idClient.get();
     }

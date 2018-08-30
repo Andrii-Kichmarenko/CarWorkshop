@@ -15,8 +15,8 @@ public class Person extends ExtensionUtility {
     private LocalDate birthDate;
     private String phoneNumber;
 
-    private ArrayList<Employee> employees;
-    private ArrayList<Client> clients;
+    private Employee employee;
+    private Client client;
 
     public Person(String name, String surname, LocalDate birthDate) {
         super();
@@ -24,20 +24,14 @@ public class Person extends ExtensionUtility {
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
-        clients = new ArrayList<>();
-        employees = new ArrayList<>();
     }
 
-    public void addEmployee(Employee employee){
-        if(employees.add(employee)){
-            employees.add(employee);
-        }
+    public void setEmployee(Employee employee){
+        this.employee = employee;
     }
 
-    public void addClient(Client client){
-        if(!clients.contains(client)){
-            clients.add(client);
-        }
+    public void setEmployee(Client client){
+        this.client = client;
     }
 
     public String getName() {

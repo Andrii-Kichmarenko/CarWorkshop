@@ -24,7 +24,6 @@ public class Manager extends Employee {
             throw new Exception("Person doesn't exist.");
         }
         Manager manager = new Manager(person, hireDate, higherEducation, bonusForOrder);
-        person.addEmployee(manager);
         return manager;
     }
 

@@ -14,7 +14,6 @@ public class ScreenController {
     private static HashMap<String, Parent> screenMap = new HashMap<>();
     private static Scene currentScene;
     private Main ref;
-    private ClientFx selectedClient;
     private Car selectedCar;
 
     public ScreenController() {
@@ -33,14 +32,6 @@ public class ScreenController {
     public void activate(String name) throws IOException {
         currentScene.setRoot( screenMap.get(name));
         currentScene.getStylesheets().add("main.css");
-    }
-
-    public ClientFx getSelectedClient() {
-        return selectedClient;
-    }
-
-    public void setSelectedClient(ClientFx selectedClient) {
-        this.selectedClient = selectedClient;
     }
 
     public Car getSelectedCar() {

@@ -7,10 +7,12 @@ public class OrderConverter {
 
     public static OrderFx convertToOrderFx(Order order){
         OrderFx orderFx = new OrderFx();
-        orderFx.setClientInfo(order.getCar().getClient().getPerson().getName() + " "
-                + order.getCar().getClient().getPerson().getSurname());
-        orderFx.setCarInfo(order.getCar().getBrand() + " "
-                + order.getCar().getModel());
+        if(order.getCar() != null){
+            orderFx.setClientInfo(order.getCar().getClient().getPerson().getName() + " "
+                    + order.getCar().getClient().getPerson().getSurname());
+            orderFx.setCarInfo(order.getCar().getBrand() + " "
+                    + order.getCar().getModel());
+        }
         orderFx.setPlacedDate(order.getPlacedDate());
         orderFx.setFinishDate(order.getFinishedData());
         orderFx.setStatus(order.getStatus());

@@ -2,11 +2,11 @@ package events;
 
 import models.Order;
 
-public class FullFillOrderEvent {
+public class FilledOrderEvent {
 
     private Order order;
 
-    public FullFillOrderEvent(Order filledOrder) {
+    public FilledOrderEvent(Order filledOrder) {
         order = filledOrder;
     }
 
