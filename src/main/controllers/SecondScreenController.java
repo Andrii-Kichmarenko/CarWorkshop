@@ -12,7 +12,8 @@ import java.util.HashMap;
 
 public class SecondScreenController {
 
-    private Stage stage;
+    public static int openCounter = 0;
+    private static Stage stage;
     private static HashMap<String, Parent> screenMap = new HashMap<>();
     private static Scene currentScene;
 
@@ -20,11 +21,12 @@ public class SecondScreenController {
     }
 
     public SecondScreenController(Scene currentScene, String name, Parent parent) {
-        stage = new Stage();
+        if(stage == null)
+            stage = new Stage();
         stage.setScene(currentScene);
         this.currentScene = currentScene;
         screenMap.put(name, parent);
-        EventBus.getDefault().register(this);
+
     }
 
     public static void addScreen(String name, Parent parent) {
@@ -37,13 +39,6 @@ public class SecondScreenController {
             stage.show();
     }
 
-    @Subscribe
-    public void onOpenAddCarEvent(OpenAddCarEvent event) {
-        try {
-            activate("add_car_form_view");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
 }

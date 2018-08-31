@@ -2,6 +2,7 @@ package controllers;
 
 import events.AddCarEvent;
 import events.ChooseClientEvent;
+import events.OpenAddCarEvent;
 import fxmodels.CarFx;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -18,6 +19,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import utils.ExtensionUtility;
 import utils.converters.CarConverter;
+
+import java.io.IOException;
 
 public class AddCarController extends SecondScreenController {
 
@@ -74,6 +77,16 @@ public class AddCarController extends SecondScreenController {
                 + client.getPerson().getSurname());
     }
 
+    @Subscribe
+    public void onOpenAddCarEvent(OpenAddCarEvent event) {
+        try {
+            openCounter+=1;
+            activate("add_car_form_view");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private CarFx createCarFx() {
         CarFx newCarFx = new CarFx();
         newCarFx.setVin(vinTextField.getText());
@@ -108,5 +121,6 @@ public class AddCarController extends SecondScreenController {
 
     private void cancelButtonAction(MouseEvent mouseEvent) {
         ((Stage) cancelButton.getScene().getWindow()).close();
+        System.out.println(openCounter);
     }
 }
