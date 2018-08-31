@@ -28,7 +28,6 @@ public class ScreenController {
 
     public void activate(String name) throws IOException {
         currentScene.setRoot( screenMap.get(name));
-        currentScene.getStylesheets().add("main.css");
     }
 
 }

@@ -62,9 +62,8 @@ public class AddCarController extends SecondScreenController {
         if(isPassRequirements()){
             Car newConvertedCar = CarConverter.convertToCar(createCarFx());
             newConvertedCar.setClient(client);
+            ((Stage) cancelButton.getScene().getWindow()).close();
             EventBus.getDefault().post(new AddCarEvent(newConvertedCar));
-            Stage stage = (Stage) cancelButton.getScene().getWindow();
-            stage.hide();
         }
     }
 
@@ -108,9 +107,6 @@ public class AddCarController extends SecondScreenController {
     }
 
     private void cancelButtonAction(MouseEvent mouseEvent) {
-        getStage().close();
+        ((Stage) cancelButton.getScene().getWindow()).close();
     }
-
-
-
 }

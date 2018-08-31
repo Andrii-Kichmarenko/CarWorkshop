@@ -44,6 +44,13 @@ public class Main extends Application {
         Scene scene1 = new Scene(parent4);
         SecondScreenController secondScreenController = new SecondScreenController(scene1,"add_car_form_view", parent4);
 
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+
+            public void run() {
+                saveAndFinish();
+            }
+        }));
+
     }
 
     public static void main(String[] args) throws Exception {

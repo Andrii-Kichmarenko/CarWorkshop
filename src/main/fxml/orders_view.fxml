@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListOrdersController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListOrdersController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -56,7 +56,7 @@
             <TableColumn fx:id="carInfoColumn" prefWidth="305.0" text="Car" />
             <TableColumn fx:id="placedDateColumn" prefWidth="193.0" text="Placed date" />
             <TableColumn fx:id="finishedDateColumn" prefWidth="180.0" text="Finish date" />
-            <TableColumn fx:id="statusColumn" prefWidth="162.0" text="Status" />
+            <TableColumn fx:id="statusColumn" prefWidth="179.0" text="Status" />
         </columns>
       </TableView>
    </center>
