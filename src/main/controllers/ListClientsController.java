@@ -41,7 +41,8 @@ public class ListClientsController extends ScreenController{
 
     @FXML
     private Button nextButton;
-
+    @FXML
+    private Button backButton;
     @FXML
     private Button cancelButton;
 
@@ -69,6 +70,7 @@ public class ListClientsController extends ScreenController{
 
         clientsTableView.setOnMouseClicked(this::getSelectedItem);
         nextButton.setOnMouseClicked(this::nextButtonAction);
+        backButton.setOnMouseClicked(this::backButtonAction);
         cancelButton.setOnMouseClicked(this::cancelButtonAction);
 
     }
@@ -90,6 +92,14 @@ public class ListClientsController extends ScreenController{
 
         try {
             activate("choose_car_view");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void backButtonAction(MouseEvent mouseEvent) {
+        try {
+            activate("orders_view");
         } catch (IOException e) {
             e.printStackTrace();
         }

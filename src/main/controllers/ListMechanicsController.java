@@ -35,7 +35,8 @@ public class ListMechanicsController extends ScreenController{
 
     @FXML
     private Button nextButton;
-
+    @FXML
+    private Button backButton;
     @FXML
     private Button cancelButton;
 
@@ -64,6 +65,7 @@ public class ListMechanicsController extends ScreenController{
 
         mechanicsTableView.setOnMouseClicked(this::getSelectedItem);
         nextButton.setOnMouseClicked(this::nextButtonAction);
+        backButton.setOnMouseClicked(this::backButtonAction);
         cancelButton.setOnMouseClicked(this::cancelButtonAction);
     }
 
@@ -85,6 +87,14 @@ public class ListMechanicsController extends ScreenController{
 
         try {
             activate("orders_view");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void backButtonAction(MouseEvent mouseEvent) {
+        try {
+            activate("choose_car_view");
         } catch (IOException e) {
             e.printStackTrace();
         }

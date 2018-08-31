@@ -49,7 +49,7 @@
                </font>
             </Button>
             <Region HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" text="Back">
+            <Button fx:id="backButton" mnemonicParsing="false" text="Back">
                <font>
                   <Font size="16.0" />
                </font>

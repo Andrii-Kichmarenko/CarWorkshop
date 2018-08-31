@@ -56,7 +56,7 @@
             <TableColumn fx:id="carInfoColumn" prefWidth="305.0" text="Car" />
             <TableColumn fx:id="placedDateColumn" prefWidth="193.0" text="Placed date" />
             <TableColumn fx:id="finishedDateColumn" prefWidth="180.0" text="Finish date" />
-            <TableColumn fx:id="statusColumn" prefWidth="179.0" text="Status" />
+            <TableColumn fx:id="statusColumn" prefWidth="168.0" text="Status" />
         </columns>
       </TableView>
    </center>

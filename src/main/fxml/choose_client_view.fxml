@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListClientsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListClientsController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -44,7 +44,7 @@
                </font>
             </Button>
             <Region HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" text="Back">
+            <Button fx:id="backButton" mnemonicParsing="false" text="Back">
                <font>
                   <Font size="16.0" />
                </font>
@@ -67,9 +67,9 @@
           <TableColumn fx:id="nameColumn" prefWidth="164.0" text="Name" />
           <TableColumn fx:id="surnameColumn" prefWidth="178.0" text="Surname" />
             <TableColumn fx:id="birthdateColumn" prefWidth="162.0" text="Birthdate" />
-            <TableColumn fx:id="registrationColumn" prefWidth="186.0" text="Registration date" />
-            <TableColumn fx:id="phoneNumberColumn" prefWidth="156.0" text="Phone number" />
-            <TableColumn fx:id="emailColumn" prefWidth="236.0" text="Email" />
+            <TableColumn fx:id="registrationColumn" prefWidth="184.0" text="Registration date" />
+            <TableColumn fx:id="phoneNumberColumn" prefWidth="158.0" text="Phone number" />
+            <TableColumn fx:id="emailColumn" prefWidth="345.0" text="Email" />
         </columns>
       </TableView>
    </center>

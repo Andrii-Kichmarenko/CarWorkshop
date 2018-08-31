@@ -1,11 +1,8 @@
 package controllers;
 
-import events.OpenAddCarEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -24,6 +21,7 @@ public class SecondScreenController {
         if(stage == null)
             stage = new Stage();
         stage.setScene(currentScene);
+        stage.setResizable(false);
         this.currentScene = currentScene;
         screenMap.put(name, parent);
 

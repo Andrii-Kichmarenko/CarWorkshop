@@ -48,6 +48,9 @@ public class ListCarsController extends ScreenController{
     private Button addCarButton;
     @FXML
     private Button cancelButton;
+    @FXML
+    private Button backButton;
+
 
     private boolean isTableEmpty;
 
@@ -73,10 +76,11 @@ public class ListCarsController extends ScreenController{
             carsTableView.setPlaceholder(new Label("Client hasn't registered cars. Press \"Add Car\" to add new one."));
         }
 
-        this.carsTableView.setOnMouseClicked(this::getSelectedItem);
-        this.nextButton.setOnMouseClicked(this::nextButtonAction);
-        this.addCarButton.setOnMouseClicked(this::addCarButtonAction);
-        this.cancelButton.setOnMouseClicked(this::cancelButtonAction);
+        carsTableView.setOnMouseClicked(this::getSelectedItem);
+        nextButton.setOnMouseClicked(this::nextButtonAction);
+        backButton.setOnMouseClicked(this::backButtonAction);
+        addCarButton.setOnMouseClicked(this::addCarButtonAction);
+        cancelButton.setOnMouseClicked(this::cancelButtonAction);
 
         // init eventBus
         EventBus.getDefault().register(this);
@@ -103,6 +107,14 @@ public class ListCarsController extends ScreenController{
 
         try {
             activate("choose_mechanic_view");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void backButtonAction(MouseEvent mouseEvent) {
+        try {
+            activate("choose_client_view");
         } catch (IOException e) {
             e.printStackTrace();
         }

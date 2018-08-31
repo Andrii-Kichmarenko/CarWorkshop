@@ -33,13 +33,14 @@ public class Main extends Application {
         primaryStage.setTitle("Car Workshop");
 
         Scene scene = new Scene(parent);
-        scene.getStylesheets().add("main.css");
+        scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
         ScreenController screenController = new ScreenController(scene, "orders_view" , parent);
         screenController.addScreen("choose_client_view", parent1);
         screenController.addScreen("choose_car_view", parent2);
         screenController.addScreen("choose_mechanic_view", parent3);
         primaryStage.setScene(scene);
         primaryStage.show();
+        screenController.setMinWidthHeight();
 
         Scene scene1 = new Scene(parent4);
         SecondScreenController secondScreenController = new SecondScreenController(scene1,"add_car_form_view", parent4);
