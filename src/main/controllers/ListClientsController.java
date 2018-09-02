@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import models.Client;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.omg.CORBA.portable.ApplicationException;
@@ -87,7 +88,7 @@ public class ListClientsController extends ScreenController{
     @FXML
     private void nextButtonAction(MouseEvent event){
         System.out.println("Next_bt_Pressed");
-        Integer selectedClient = clientsTableView.getSelectionModel().getSelectedItem().getIdClient();
+        Client selectedClient = clientsTableView.getSelectionModel().getSelectedItem().getClient();
         EventBus.getDefault().post(new ChooseClientEvent(selectedClient));
 
         try {

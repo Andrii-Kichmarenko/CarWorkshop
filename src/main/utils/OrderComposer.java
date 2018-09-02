@@ -1,13 +1,14 @@
 package utils;
 
 import events.*;
+import models.Client;
 import models.Order;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 public class OrderComposer {
 
-    private Integer idClient;
+    private Client сlient;
     private Integer idCar;
     private Integer idMechanic;
 
@@ -18,7 +19,7 @@ public class OrderComposer {
 
     @Subscribe
     public void onChooseClientEvent(ChooseClientEvent event){
-        setIdClient(event.getIdClient());
+        setСlient(event.getClient());
     }
 
     @Subscribe
@@ -39,8 +40,8 @@ public class OrderComposer {
         EventBus.getDefault().post(new FilledOrderEvent(order));
     }
 
-    private void setIdClient(Integer idClient) {
-        this.idClient = idClient;
+    public void setСlient(Client сlient) {
+        this.сlient = сlient;
     }
 
     public void setIdCar(Integer idCar) {

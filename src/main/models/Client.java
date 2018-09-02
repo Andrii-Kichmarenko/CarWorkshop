@@ -14,7 +14,7 @@ public class Client extends ExtensionUtility implements Serializable {
     private LocalDate registrationDate;
     private String emailAdress;
 
-    private List<Car> cars;
+    private ArrayList<Car> cars;
     private Person person;
 
     private Client (Person person, LocalDate registrationDate) {
@@ -63,11 +63,11 @@ public class Client extends ExtensionUtility implements Serializable {
         this.emailAdress = emailAdress;
     }
 
-    public List<Car> getCars() {
+    public ArrayList<Car> getCars() {
         return cars;
     }
 
-    public void setCars(List<Car> cars) {
+    public void setCars(ArrayList<Car> cars) {
         this.cars = cars;
     }
 

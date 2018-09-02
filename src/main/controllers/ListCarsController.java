@@ -3,11 +3,9 @@ package controllers;
 import events.AddCarEvent;
 import events.ChooseCarEvent;
 import events.OpenAddCarEvent;
-import fxml.Main;
 import fxmodels.CarFx;
 import fxmodels.ListCarsModel;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,12 +13,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
+import models.Client;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.omg.CORBA.portable.ApplicationException;
 import events.ChooseClientEvent;
-import utils.ExtensionUtility;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -141,7 +138,7 @@ public class ListCarsController extends ScreenController{
 
     @Subscribe
     public void onChooseClient(ChooseClientEvent event){
-        launchCarFilter(event.getIdClient());
+        loadClientCars(event.getClient());
     }
 
     @Subscribe
@@ -149,8 +146,8 @@ public class ListCarsController extends ScreenController{
         listCarsModel.addCar(event.getNewCar());
     }
 
-    private void launchCarFilter(Integer idClient){
-        listCarsModel.filterCarList(idClient);
+    private void loadClientCars(Client client){
+        listCarsModel.updateCarList(client);
         if(isTableEmpty){
             setUpTableView();
         }

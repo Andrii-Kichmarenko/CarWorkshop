@@ -72,7 +72,7 @@ public class AddCarController extends SecondScreenController {
 
     @Subscribe
     public void onChooseClientEvent(ChooseClientEvent event){
-        client = ExtensionUtility.getClient(event.getIdClient());
+        client = (event.getClient());
         clientInfoLable.setText(client.getPerson().getName() + " "
                 + client.getPerson().getSurname());
     }

@@ -3,6 +3,7 @@ package fxmodels;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.Car;
+import models.Client;
 import org.omg.CORBA.portable.ApplicationException;
 import utils.ExtensionUtility;
 import utils.converters.CarConverter;
@@ -13,9 +14,10 @@ import java.util.List;
 public class ListCarsModel {
     private ObservableList<CarFx> carFxObservableList = FXCollections.observableArrayList();
     private List<CarFx> carsFxList = new ArrayList<>();
+    List<Car> carsOrigin;
 
     public void init() throws ApplicationException {
-        List<Car> carsOrigin = ExtensionUtility.getExtension(Car.class);
+        carsOrigin = ExtensionUtility.getExtension(Car.class);
         if(carsOrigin != null){
             carsOrigin.forEach(car -> {
                 this.carsFxList.add(CarConverter.convertToCarFx(car));
@@ -32,15 +34,11 @@ public class ListCarsModel {
         this.carFxObservableList = carFxObservableList;
     }
 
-    public void filterCarList(Integer idClient) {
+    public void updateCarList(Client client) {
         carsFxList.clear();
-        List<Car> carsOrigin = ExtensionUtility.getExtension(Car.class);
-        if(carsOrigin != null){
-            carsOrigin.forEach(car -> {
-                if(car.getClient().getPerson().getIdPerson() == idClient){
-                    this.carsFxList.add(CarConverter.convertToCarFx(car));
-                }
-            });
+        ArrayList<Car> cars = client.getCars();
+        if(!cars.isEmpty()){
+            cars.forEach(car -> { carsFxList.add(CarConverter.convertToCarFx(car)); });
             this.carFxObservableList.setAll(carsFxList);
         }
     }

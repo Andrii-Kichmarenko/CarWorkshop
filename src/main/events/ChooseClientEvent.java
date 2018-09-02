@@ -1,14 +1,16 @@
 package events;
 
+import models.Client;
+
 public class ChooseClientEvent {
 
-    private Integer idClient;
+    private Client client;
 
-    public ChooseClientEvent(int idClient) {
-        this.idClient = idClient;
+    public ChooseClientEvent(Client client) {
+        this.client = client;
     }
 
-    public Integer getIdClient() {
-        return idClient;
+    public Client getClient() {
+        return client;
     }
 }

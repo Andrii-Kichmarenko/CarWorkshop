@@ -1,12 +1,13 @@
 package fxmodels;
 
 import javafx.beans.property.*;
+import models.Client;
 
 import java.time.LocalDate;
 
 public class ClientFx {
 
-    private IntegerProperty idClient = new SimpleIntegerProperty();
+    private ObjectProperty<Client> client = new SimpleObjectProperty();
     private SimpleStringProperty name = new SimpleStringProperty();
     private SimpleStringProperty surname= new SimpleStringProperty();
     private ObjectProperty<LocalDate> birthdayDate = new SimpleObjectProperty<>();
@@ -14,16 +15,16 @@ public class ClientFx {
     private SimpleStringProperty phoneNumber = new SimpleStringProperty();
     private SimpleStringProperty email = new SimpleStringProperty();
 
-    public int getIdClient() {
-        return idClient.get();
+    public Client getClient() {
+        return client.get();
     }
 
-    public IntegerProperty idClientProperty() {
-        return idClient;
+    public ObjectProperty<Client> clientProperty() {
+        return client;
     }
 
-    public void setIdClient(int idClient) {
-        this.idClient.set(idClient);
+    public void setClient(Client client) {
+        this.client.set(client);
     }
 
     public String getName() {

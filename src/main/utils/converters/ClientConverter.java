@@ -8,7 +8,7 @@ public class ClientConverter {
 
     public static ClientFx convertToClientFx(Client client){
         ClientFx clientFx = new ClientFx();
-        clientFx.setIdClient(client.getPerson().getIdPerson());
+        clientFx.setClient(client);
         clientFx.setName(client.getPerson().getName());
         clientFx.setSurname(client.getPerson().getSurname());
         clientFx.setBirthdayDate(client.getPerson().getBirthDate());

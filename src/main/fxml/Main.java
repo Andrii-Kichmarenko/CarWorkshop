@@ -46,7 +46,6 @@ public class Main extends Application {
         SecondScreenController secondScreenController = new SecondScreenController(scene1,"add_car_form_view", parent4);
 
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-
             public void run() {
                 saveAndFinish();
             }
